@@ -7,26 +7,28 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='User',
+            name="User",
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('username', models.CharField(max_length=100)),
-                ('email', models.EmailField(max_length=254, unique=True)),
-                ('phone_number', models.CharField(blank=True, max_length=15, null=True)),
-                ('password', models.CharField(max_length=100)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(blank=True, null=True)),
-                ('address', models.TextField(blank=True, null=True)),
+                ("id", models.AutoField(primary_key=True, serialize=False)),
+                ("username", models.CharField(max_length=100)),
+                ("email", models.EmailField(max_length=254, unique=True)),
+                (
+                    "phone_number",
+                    models.CharField(blank=True, max_length=15, null=True),
+                ),
+                ("password", models.CharField(max_length=100)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(blank=True, null=True)),
+                ("address", models.TextField(blank=True, null=True)),
             ],
             options={
-                'verbose_name': 'User',
-                'verbose_name_plural': 'Users',
-                'db_table': 'users',
+                "verbose_name": "User",
+                "verbose_name_plural": "Users",
+                "db_table": "users",
             },
         ),
     ]

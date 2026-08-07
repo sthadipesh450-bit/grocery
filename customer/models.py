@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class Customer(models.Model):
     id = models.AutoField(primary_key=True)
@@ -12,9 +13,9 @@ class Customer(models.Model):
     address = models.TextField(blank=True, null=True)
 
     class Meta:
-        db_table = 'customers'
-        verbose_name = 'Customer'
-        verbose_name_plural = 'Customers'
+        db_table = "customers"
+        verbose_name = "Customer"
+        verbose_name_plural = "Customers"
 
     def __str__(self):
         return self.username

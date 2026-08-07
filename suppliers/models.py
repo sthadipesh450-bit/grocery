@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class Suppliers(models.Model):
     name = models.CharField(max_length=100)
@@ -11,12 +12,12 @@ class Suppliers(models.Model):
     is_active = models.BooleanField(default=True)
 
     class Meta:
-        db_table = 'suppliers'
-        verbose_name = 'Supplier'
-        verbose_name_plural = 'Suppliers'
+        db_table = "suppliers"
+        verbose_name = "Supplier"
+        verbose_name_plural = "Suppliers"
         indexes = [
-            models.Index(fields=['name']),
-            models.Index(fields=['email']),
+            models.Index(fields=["name"]),
+            models.Index(fields=["email"]),
         ]
 
     def __str__(self):

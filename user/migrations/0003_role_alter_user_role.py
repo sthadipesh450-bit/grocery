@@ -7,25 +7,39 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('user', '0002_user_role'),
+        ("user", "0002_user_role"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Role',
+            name="Role",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=50, unique=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=50, unique=True)),
             ],
             options={
-                'verbose_name': 'Role',
-                'verbose_name_plural': 'Roles',
-                'db_table': 'roles',
+                "verbose_name": "Role",
+                "verbose_name_plural": "Roles",
+                "db_table": "roles",
             },
         ),
         migrations.AlterField(
-            model_name='user',
-            name='role',
-            field=models.ForeignKey(blank=True, default=None, null=True, on_delete=django.db.models.deletion.SET_NULL, to='user.role'),
+            model_name="user",
+            name="role",
+            field=models.ForeignKey(
+                blank=True,
+                default=None,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to="user.role",
+            ),
         ),
     ]

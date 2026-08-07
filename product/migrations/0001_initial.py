@@ -7,40 +7,39 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('category_name', models.CharField(max_length=100)),
-                ('description', models.TextField(blank=True, null=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
+                ("id", models.AutoField(primary_key=True, serialize=False)),
+                ("category_name", models.CharField(max_length=100)),
+                ("description", models.TextField(blank=True, null=True)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
             ],
             options={
-                'verbose_name': 'Category',
-                'verbose_name_plural': 'Categories',
-                'db_table': 'categories',
+                "verbose_name": "Category",
+                "verbose_name_plural": "Categories",
+                "db_table": "categories",
             },
         ),
         migrations.CreateModel(
-            name='Product',
+            name="Product",
             fields=[
-                ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('product_name', models.CharField(max_length=100)),
-                ('description', models.TextField(blank=True, null=True)),
-                ('price', models.DecimalField(decimal_places=2, max_digits=10)),
-                ('quantity', models.PositiveIntegerField(default=0)),
-                ('manufacture_date', models.DateTimeField(auto_now_add=True)),
-                ('expiry_date', models.DateTimeField(auto_now=True)),
+                ("id", models.AutoField(primary_key=True, serialize=False)),
+                ("product_name", models.CharField(max_length=100)),
+                ("description", models.TextField(blank=True, null=True)),
+                ("price", models.DecimalField(decimal_places=2, max_digits=10)),
+                ("quantity", models.PositiveIntegerField(default=0)),
+                ("manufacture_date", models.DateTimeField(auto_now_add=True)),
+                ("expiry_date", models.DateTimeField(auto_now=True)),
             ],
             options={
-                'verbose_name': 'Product',
-                'verbose_name_plural': 'Products',
-                'db_table': 'products',
+                "verbose_name": "Product",
+                "verbose_name_plural": "Products",
+                "db_table": "products",
             },
         ),
     ]

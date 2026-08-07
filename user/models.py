@@ -1,13 +1,17 @@
 from django.db import models
 
+
 class Role(models.Model):
     name = models.CharField(max_length=50, unique=True)
+
     class Meta:
-        db_table = 'roles'
-        verbose_name = 'Role'
+        db_table = "roles"
+        verbose_name = "Role"
         verbose_name_plural = "Roles"
+
     def __str__(self):
         return self.name
+
 
 # Create your models here.
 class User(models.Model):
@@ -28,9 +32,9 @@ class User(models.Model):
     )
 
     class Meta:
-        db_table = 'users'
-        verbose_name = 'User'
-        verbose_name_plural = 'Users'
+        db_table = "users"
+        verbose_name = "User"
+        verbose_name_plural = "Users"
 
     def __str__(self):
         return self.username

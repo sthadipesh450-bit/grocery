@@ -7,27 +7,40 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Suppliers',
+            name="Suppliers",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('email', models.EmailField(max_length=254, unique=True)),
-                ('phone_number', models.CharField(blank=True, max_length=15, null=True)),
-                ('address', models.TextField(blank=True, null=True)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('is_active', models.BooleanField(default=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                ("email", models.EmailField(max_length=254, unique=True)),
+                (
+                    "phone_number",
+                    models.CharField(blank=True, max_length=15, null=True),
+                ),
+                ("address", models.TextField(blank=True, null=True)),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("is_active", models.BooleanField(default=True)),
             ],
             options={
-                'verbose_name': 'Supplier',
-                'verbose_name_plural': 'Suppliers',
-                'db_table': 'suppliers',
-                'indexes': [models.Index(fields=['name'], name='suppliers_name_ed482a_idx'), models.Index(fields=['email'], name='suppliers_email_633111_idx')],
+                "verbose_name": "Supplier",
+                "verbose_name_plural": "Suppliers",
+                "db_table": "suppliers",
+                "indexes": [
+                    models.Index(fields=["name"], name="suppliers_name_ed482a_idx"),
+                    models.Index(fields=["email"], name="suppliers_email_633111_idx"),
+                ],
             },
         ),
     ]

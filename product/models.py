@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class Category(models.Model):
     id = models.AutoField(primary_key=True)
@@ -9,12 +10,13 @@ class Category(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        db_table = 'categories'
-        verbose_name = 'Category'
-        verbose_name_plural = 'Categories'
+        db_table = "categories"
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
 
     def __str__(self):
         return self.category_name
+
 
 class Product(models.Model):
     id = models.AutoField(primary_key=True)
@@ -24,12 +26,11 @@ class Product(models.Model):
     quantity = models.PositiveIntegerField(default=0)
     manufacture_date = models.DateTimeField(auto_now_add=True)
     expiry_date = models.DateTimeField(auto_now=True)
-    
 
     class Meta:
-        db_table = 'products'
-        verbose_name = 'Product'
-        verbose_name_plural = 'Products'
-        
+        db_table = "products"
+        verbose_name = "Product"
+        verbose_name_plural = "Products"
+
     def __str__(self):
         return self.product_name
