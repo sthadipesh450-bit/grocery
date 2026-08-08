@@ -8,22 +8,25 @@ from .models import Suppliers
 
 class SupplierListView(LoginRequiredMixin, ListView):
     model = Suppliers
-    template_name = "suppliers/supplier_list.html"
+    template_name = "supplierslist.html"
     context_object_name = "suppliers"
 
 
 class SupplierCreateView(LoginRequiredMixin, CreateView):
     model = Suppliers
     form_class = SupplierForm
+    template_name = "supplierscreate.html"
     success_url = reverse_lazy("suppliers:supplier-list")
 
 
 class SupplierUpdateView(LoginRequiredMixin, UpdateView):
     model = Suppliers
     form_class = SupplierForm
+    template_name = "suppliersupdate.html"
     success_url = reverse_lazy("suppliers:supplier-list")
 
 
 class SupplierDeleteView(LoginRequiredMixin, DeleteView):
     model = Suppliers
     success_url = reverse_lazy("suppliers:supplier-list")
+    template_name = "suppliersdelete.html"

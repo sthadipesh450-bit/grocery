@@ -15,15 +15,18 @@ class CustomerListView(LoginRequiredMixin, ListView):
 class CustomerCreateView(LoginRequiredMixin, CreateView):
     model = Customer
     form_class = CustomerForm
+    template_name = "customer/customer_form.html"
     success_url = reverse_lazy("customer:customer-list")
 
 
 class CustomerUpdateView(LoginRequiredMixin, UpdateView):
     model = Customer
     form_class = CustomerForm
+    template_name = "customer/customer_form.html"
     success_url = reverse_lazy("customer:customer-list")
 
 
 class CustomerDeleteView(LoginRequiredMixin, DeleteView):
     model = Customer
     success_url = reverse_lazy("customer:customer-list")
+    template_name = "customer/customer_confirm_delete.html"

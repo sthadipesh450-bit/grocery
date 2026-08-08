@@ -12,7 +12,7 @@ class CustomerForm(forms.ModelForm):
         widget=forms.EmailInput(attrs={"placeholder": "Enter Email"}),
         label="Email",
     )
-    phone = forms.CharField(
+    phone_number = forms.CharField(
         widget=forms.TextInput(attrs={"placeholder": "Enter Phone Number"}),
     )
     password = forms.CharField(
@@ -22,4 +22,4 @@ class CustomerForm(forms.ModelForm):
 
     class Meta:
         model = Customer
-        fields = "__all__"
+        fields = ["username", "email", "phone_number", "password", "address"]

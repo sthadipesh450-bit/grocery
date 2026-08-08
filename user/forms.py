@@ -3,8 +3,9 @@ from .models import User
 
 
 class UserForm(forms.ModelForm):
-    name = forms.CharField(
-        widget=forms.TextInput(attrs={"placeholder": "Enter Name"}), label="Name"
+    username = forms.CharField(
+        widget=forms.TextInput(attrs={"placeholder": "Enter username"}),
+        label="Username",
     )
     email = forms.EmailField(
         widget=forms.EmailInput(attrs={"placeholder": "Enter Email"}), label="Email"
@@ -16,4 +17,11 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = "__all__"
+        fields = ["username", "email", "phone_number", "address", "role", "password"]
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.set_password(self.cleaned_data["password"])
+        if commit:
+            user.save()
+        return user

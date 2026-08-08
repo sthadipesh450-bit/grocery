@@ -1,8 +1,29 @@
-{% extends "base.html" %}
+{% extends "home/base.html" %}
 
 {% block content %}
+    <style>
+        .supplier-card { background: #fff; border-radius: 12px; padding: 28px; box-shadow: 0 2px 12px rgba(0,0,0,.08); }
+        .supplier-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 24px; }
+        .supplier-header h1 { margin: 0; font-size: 1.7rem; color: #243447; }
+        .supplier-add, .supplier-action { display: inline-block; padding: 9px 14px; border-radius: 6px; text-decoration: none; font-weight: 600; }
+        .supplier-add { background: #0d6efd; color: #fff; }
+        .supplier-add:hover { background: #0b5ed7; color: #fff; }
+        .supplier-table { width: 100%; border-collapse: collapse; overflow: hidden; border-radius: 8px; }
+        .supplier-table th { background: #343a40; color: #fff; text-align: left; padding: 13px 14px; }
+        .supplier-table td { padding: 13px 14px; border-bottom: 1px solid #e9ecef; color: #495057; }
+        .supplier-table tbody tr:hover { background: #f8f9fa; }
+        .supplier-action { padding: 6px 10px; font-size: .85rem; margin-right: 6px; }
+        .supplier-edit { color: #0d6efd; background: #e7f1ff; }
+        .supplier-delete { color: #b02a37; background: #f8d7da; }
+        .supplier-empty { text-align: center; color: #6c757d; padding: 28px; }
+        @media (max-width: 700px) { .supplier-card { padding: 18px; } .supplier-table { display: block; overflow-x: auto; white-space: nowrap; } }
+    </style>
+    <div class="supplier-card">
+        <div class="supplier-header">
     <h1>Suppliers List</h1>
-    <table>
+    <a class="supplier-add" href="{% url 'suppliers:supplier-create' %}">Add Supplier</a>
+        </div>
+    <table class="supplier-table">
         <thead>
             <tr>
                 <th>Name</th>
@@ -16,13 +37,16 @@
                 <tr>
                     <td>{{ supplier.name }}</td>
                     <td>{{ supplier.email }}</td>
-                    <td>{{ supplier.phone }}</td>
+                    <td>{{ supplier.phone_number }}</td>
                     <td>
-                        <a href="{% url 'supplier_edit' supplier.id %}">Edit</a>
-                        <a href="{% url 'supplier_delete' supplier.id %}">Delete</a>
+                        <a class="supplier-action supplier-edit" href="{% url 'suppliers:supplier-update' supplier.id %}">Edit</a>
+                        <a class="supplier-action supplier-delete" href="{% url 'suppliers:supplier-delete' supplier.id %}">Delete</a>
                     </td>
                 </tr>
+            {% empty %}
+                <tr><td class="supplier-empty" colspan="4">No suppliers found.</td></tr>
             {% endfor %}
         </tbody>
     </table>
+    </div>
 {% endblock %}

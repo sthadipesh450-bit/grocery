@@ -113,6 +113,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Signup uses the project's custom User model instead of Django's built-in one.
+AUTHENTICATION_BACKENDS = ["user.backends.UserModelBackend"]
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/

@@ -1,0 +1,2 @@
+{% extends "home/base.html" %}
+{% block content %}<div style="max-width:500px;margin:auto;background:#fff;padding:30px;border-radius:12px;box-shadow:0 2px 12px #00000014"><h1>Delete Order</h1><p>Delete order <strong>#{{ object.order_id }}</strong>?</p><form method="post">{% csrf_token %}<button style="background:#dc3545;color:#fff;border:0;padding:10px 16px;border-radius:6px">Delete</button> <a href="{% url 'orders:order-list' %}">Cancel</a></form></div>{% endblock %}

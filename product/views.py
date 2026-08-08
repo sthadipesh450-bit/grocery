@@ -15,15 +15,18 @@ class ProductListView(LoginRequiredMixin, ListView):
 class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
+    template_name = "product/product_form.html"
     success_url = reverse_lazy("product:product-list")
 
 
 class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
+    template_name = "product/product_form.html"
     success_url = reverse_lazy("product:product-list")
 
 
 class ProductDeleteView(LoginRequiredMixin, DeleteView):
     model = Product
     success_url = reverse_lazy("product:product-list")
+    template_name = "product/product_confirm_delete.html"

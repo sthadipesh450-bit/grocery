@@ -1,10 +1,23 @@
-{% extends "base.html" %}
+{% extends "home/base.html" %}
 
 {% block content %}
+    <style>
+        .supplier-form-card { max-width: 650px; background: #fff; margin: 0 auto; padding: 30px; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,.08); }
+        .supplier-form-card h1 { margin: 0 0 24px; color: #243447; font-size: 1.65rem; }
+        .supplier-form-card p { margin-bottom: 16px; }
+        .supplier-form-card label { display: block; font-weight: 600; margin-bottom: 6px; color: #495057; }
+        .supplier-form-card input, .supplier-form-card textarea, .supplier-form-card select { width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 6px; }
+        .supplier-form-card input[type="checkbox"] { width: auto; }
+        .supplier-submit, .supplier-cancel { display: inline-block; border: 0; border-radius: 6px; padding: 10px 16px; text-decoration: none; font-weight: 600; cursor: pointer; }
+        .supplier-submit { background: #0d6efd; color: #fff; } .supplier-cancel { color: #495057; background: #e9ecef; margin-left: 8px; }
+    </style>
+    <div class="supplier-form-card">
     <h1>Create Supplier</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Create</button>
+        <button class="supplier-submit" type="submit">Create</button>
+        <a class="supplier-cancel" href="{% url 'suppliers:supplier-list' %}">Cancel</a>
     </form>
+    </div>
 {% endblock %}

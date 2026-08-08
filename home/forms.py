@@ -13,6 +13,9 @@ class UserSignUpForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = super().clean()
+        username = cleaned_data.get("username")
+        if username and User.objects.filter(username=username).exists():
+            self.add_error("username", "This username is already in use.")
         if cleaned_data.get("password") != cleaned_data.get("confirm_password"):
             self.add_error("confirm_password", "Passwords do not match.")
         return cleaned_data

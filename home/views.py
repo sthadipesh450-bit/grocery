@@ -9,7 +9,6 @@ from orders.models import Order
 from product.models import Product
 from django.db.models import Count
 
-
 def login_view(request):
     if request.method == "POST":
         username = request.POST.get("username")
@@ -17,7 +16,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect("home")
+            return redirect("dashboard")
         else:
             messages.error(request, "Invalid username or password.")
     form = LoginForm()
