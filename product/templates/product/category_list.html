@@ -54,39 +54,35 @@
 </style>
 <div class="card">
   <div class="head">
-    <h1>Products</h1>
-    <a class="btn" href="{% url 'product:product-create' %}">Add Product</a>
+    <h1>Categories</h1>
+    <a class="btn" href="{% url 'product:category-create' %}">Add Category</a>
   </div>
   <table>
     <thead>
       <tr>
         <th>Name</th>
         <th>Description</th>
-        <th>Price</th>
-        <th>Quantity</th>
         <th>Actions</th>
       </tr>
     </thead>
     <tbody>
-      {% for product in products %}
+      {% for category in categories %}
       <tr>
-        <td>{{ product.product_name }}</td>
-        <td>{{ product.description|default:"—" }}</td>
-        <td>{{ product.price }}</td>
-        <td>{{ product.quantity }}</td>
+        <td>{{ category.category_name }}</td>
+        <td>{{ category.description|default:"—" }}</td>
         <td>
-          <a class="edit" href="{% url 'product:product-update' product.pk %}"
+          <a class="edit" href="{% url 'product:category-update' category.pk %}"
             >Edit</a
           ><a
             class="delete"
-            href="{% url 'product:product-delete' product.pk %}"
+            href="{% url 'product:category-delete' category.pk %}"
             >Delete</a
           >
         </td>
       </tr>
       {% empty %}
       <tr>
-        <td colspan="5">No products found.</td>
+        <td colspan="3">No categories found.</td>
       </tr>
       {% endfor %}
     </tbody>

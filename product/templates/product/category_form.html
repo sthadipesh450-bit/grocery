@@ -1,4 +1,5 @@
-{% extends "home/base.html" %} {% block content %}<style>
+{% extends "home/base.html" %} {% block content %}
+<style>
   .form-card {
     max-width: 650px;
     margin: auto;
@@ -16,16 +17,11 @@
     margin-bottom: 5px;
   }
   .form-card input,
-  .form-card textarea,
-  .form-card select {
+  .form-card textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ced4da;
     border-radius: 6px;
-  }
-  .form-card ul {
-    list-style: none;
-    padding: 0;
   }
   .save,
   .cancel {
@@ -46,11 +42,11 @@
   }
 </style>
 <div class="form-card">
-  <h1>{% if object %}Update{% else %}Create{% endif %} Order</h1>
+  <h1>{% if object %}Update{% else %}Add{% endif %} Category</h1>
   <form method="post">
     {% csrf_token %}{{ form.as_p }}<button class="save" type="submit">
       Save</button
-    ><a class="cancel" href="{% url 'orders:order-list' %}">Cancel</a>
+    ><a class="cancel" href="{% url 'product:category-list' %}">Cancel</a>
   </form>
 </div>
 {% endblock %}

@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Product
+from .models import Category, Product
 
 
 class ProductForm(forms.ModelForm):
@@ -23,3 +23,18 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = "__all__"
+
+
+class CategoryForm(forms.ModelForm):
+    category_name = forms.CharField(
+        widget=forms.TextInput(attrs={"placeholder": "Enter Category Name"}),
+        label="Category Name",
+    )
+    description = forms.CharField(
+        required=False,
+        widget=forms.Textarea(attrs={"placeholder": "Enter Description"}),
+    )
+
+    class Meta:
+        model = Category
+        fields = ("category_name", "description")

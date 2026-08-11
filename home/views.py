@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from .forms import UserSignUpForm, LoginForm
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
 from user.models import User
 from orders.models import Order
@@ -43,11 +44,20 @@ def dashboard_view(request):
     total_users = User.objects.count()
     total_orders = Order.objects.count()
     total_products = Product.objects.count()
+    status_count = {
+        'pending' : Order.objects.filter(status = Order.OrderStatus.PENDING).count(),
+        'processing' : Order.objects.filter(status = Order.OrderStatus.PROCESSING).count(),
+        'shipped' : Order.objects.filter(status = Order.OrderStatus.SHIPPED).count(),
+        'delivered' : Order.objects.filter(status = Order.OrderStatus.DELIVERED).count(),
+        'cancelled' : Order.objects.filter(status = Order.OrderStatus.CANCELLED).count(),
+    }
     context = {
         "total_users": total_users,
         "total_orders": total_orders,
         "total_products": total_products,
+        "status_count": status_count,
     }
+    
     return render(request, "home/dashboard.html", context)
 
 

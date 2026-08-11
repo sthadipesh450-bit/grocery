@@ -165,6 +165,9 @@
                 <a href="{% url 'product:product-list' %}" class="{% if request.path == '/product/products/' %}active{% endif %}">Products</a>
             </li>
             <li>
+                <a href="{% url 'product:category-list' %}" class="{% if request.path == '/product/categories/' %}active{% endif %}">Categories</a>
+            </li>
+            <li>
                 <a href="{% url 'user-list' %}" class="{% if request.path == '/user/users/' %}active{% endif %}">Users</a>
             </li>
             <li>

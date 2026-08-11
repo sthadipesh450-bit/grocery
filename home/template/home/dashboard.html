@@ -1,78 +1,80 @@
 {% extends 'home/base.html' %}
 
 {% block content %}
-<style>
-    .dashboard-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 24px;
-        gap: 12px;
-        flex-wrap: wrap;
-    }
+<h2 class="text-center my-4">Welcome to the Inventory Management System</h2>
 
-    .dashboard-title {
-        font-size: 1.7rem;
-        font-weight: 700;
-        color: #111827;
-        margin-bottom: 6px;
-    }
 
-    .dashboard-subtitle {
-        color: #6b7280;
-        margin-bottom: 0;
-    }
+<h3 class="text-center mb-4">Order Status Summary</h3>
 
-    .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 16px;
-    }
+<div class="row">
 
-    .stat-card {
-        background: linear-gradient(135deg, #ffffff, #f8fafc);
-        border: 1px solid #e5e7eb;
-        border-radius: 16px;
-        padding: 20px;
-        box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
-    }
+    <div class="col-12 col-md-4 mb-3">
+        <div class="card shadow-sm border-info">
+            <div class="card-body text-center">
+                <i class="fa fa-dot-circle-o text-info fa-3x mb-3"></i>
+                <h5 class="card-title">Pending</h5>
+                <p class="card-text">
+                    <span class="h4">{{ status_count.pending }}</span>
+                </p>
+            </div>
+        </div>
+    </div>
 
-    .stat-label {
-        font-size: 0.92rem;
-        color: #64748b;
-        margin-bottom: 6px;
-    }
 
-    .stat-value {
-        font-size: 1.4rem;
-        font-weight: 700;
-        color: #111827;
-    }
-</style>
+    <div class="col-12 col-md-4 mb-3">
+        <div class="card shadow-sm border-warning">
+            <div class="card-body text-center">
+                <i class="fa fa-dot-circle-o text-warning fa-3x mb-3"></i>
+                <h5 class="card-title">Processing</h5>
+                <p class="card-text">
+                    <span class="h4">{{ status_count.processing }}</span>
+                </p>
+            </div>
+        </div>
+    </div>
 
-<div class="dashboard-header">
-    <div>
-        <h2 class="dashboard-title">Welcome Back</h2>
-        <p class="dashboard-subtitle">Your business dashboard is ready to help you manage operations smoothly.</p>
+
+    <div class="col-12 col-md-4 mb-3">
+        <div class="card shadow-sm border-purple">
+            <div class="card-body text-center">
+                <i class="fa fa-dot-circle-o text-purple fa-3x mb-3"></i>
+                <h5 class="card-title">Shipped</h5>
+                <p class="card-text">
+                    <span class="h4">{{ status_count.shipped }}</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-12 col-md-4 mb-3">
+        <div class="card shadow-sm border-success">
+            <div class="card-body text-center">
+                <i class="fa fa-dot-circle-o text-success fa-3x mb-3"></i>
+                <h5 class="card-title">Delivered</h5>
+                <p class="card-text">
+                    <span class="h4">{{ status_count.delivered }}</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-12 col-md-4 mb-3">
+        <div class="card shadow-sm border-danger">
+            <div class="card-body text-center">
+                <i class="fa fa-dot-circle-o text-danger fa-3x mb-3"></i>
+                <h5 class="card-title">Cancelled</h5>
+                <p class="card-text">
+                    <span class="h4">{{ status_count.cancelled }}</span>
+                </p>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="stats-grid">
-    <div class="stat-card">
-        <div class="stat-label">Total Orders</div>
-        <div class="stat-value">124</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-label">Active Users</div>
-        <div class="stat-value">18</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-label">Products In Stock</div>
-        <div class="stat-value">86</div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-label">Suppliers</div>
-        <div class="stat-value">12</div>
-    </div>
+<div class="text-center mt-4">
+    <a href="{% url 'orders:order-list' %}" class="btn btn-primary btn-lg">View Orders</a>
 </div>
+
 {% endblock %}
