@@ -3,10 +3,12 @@ from rest_framework.generics import GenericAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.response import Response
 from orders.models import Order
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 
 class OrderListAPIView(GenericAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         orders = self.get_queryset()
