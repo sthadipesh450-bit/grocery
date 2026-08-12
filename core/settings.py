@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 ]
-THIRD_PARTY_APPS = []
+THIRD_PARTY_APPS = [
+    "rest_framework",
+]
 PROJECT_APPS = [
     "user",
     "customer",
@@ -115,6 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Signup uses the project's custom User model instead of Django's built-in one.
 AUTHENTICATION_BACKENDS = ["user.backends.UserModelBackend","django.contrib.auth.backends.ModelBackend",]
+LOGIN_URL = "login"
 
 
 # Internationalization

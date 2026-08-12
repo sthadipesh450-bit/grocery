@@ -55,3 +55,7 @@ class User(models.Model):
     @property
     def is_anonymous(self):
         return False
+
+    @property
+    def is_active(self):
+        return True

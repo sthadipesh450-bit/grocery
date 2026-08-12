@@ -67,8 +67,7 @@
         <td>{{ order.order_date }}</td>
         <td>{{ order.status }}</td>
         <td>
-          {% for product in order.order_details.all %}{{ product.product_name
-          }}{% if not forloop.last %}, {% endif %}{% empty %}—{% endfor %}
+          {% for product in order.order_details.all %}{{ product }}{% if not forloop.last %}, {% endif %}{% empty %}—{% endfor %}
         </td>
         <td>
           <a class="edit" href="{% url 'orders:order-update' order.pk %}"
