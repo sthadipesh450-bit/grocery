@@ -49,8 +49,12 @@ urlpatterns = [
     path("supplier/", include("suppliers.urls")),
     path("order/", include("orders.urls")),
 
-    # api urls
-    path('api/v1/', include('orders.api.urls')),
+    # REST API endpoints
+    path("api/v1/users/", include("user.api.urls")),
+    path("api/v1/customers/", include("customer.api.urls")),
+    path("api/v1/products/", include("product.api.urls")),
+    path("api/v1/suppliers/", include("suppliers.api.urls")),
+    path("api/v1/orders/", include("orders.api.urls")),
     # token
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
